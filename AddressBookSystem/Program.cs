@@ -15,8 +15,13 @@ namespace AddressBookSysytem
                 switch (option)
                 {
                     case 1:
-                        address.AddContacts();
-                        address.Display();
+                        Console.WriteLine("Enter the number of contacts to add");
+                        int n=Convert.ToInt32(Console.ReadLine());
+                        for(int i=0; i<n; i++)
+                        {
+                            address.AddContacts();
+                            address.Display();
+                        }
                         break;
                         case 2:
                         Console.WriteLine("Enter First Name");
