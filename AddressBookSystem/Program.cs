@@ -21,6 +21,7 @@ namespace AddressBookSysytem
                         case 2:
                         Console.WriteLine("Enter First Name");
                         address.EditContacts(Console.ReadLine());
+                        address.Display();
                         break;
                         case 3:
                         flag = false;
