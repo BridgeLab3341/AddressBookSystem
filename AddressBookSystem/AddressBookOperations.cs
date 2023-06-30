@@ -8,8 +8,8 @@ namespace AddressBookSystem
 {
     public class AddressBookOperations
     {
-       // List<Contacts> addressList = new List<Contacts>();
         Contacts contacts = new Contacts();
+        List<Contacts> addressList = new List<Contacts>();
         public void AddContacts()
         {
             {
@@ -35,36 +35,40 @@ namespace AddressBookSystem
                 Console.WriteLine("1.First Name=" + contacts.First_Name + "\n2.Last Name=" + contacts.Last_Name + "\n3.Address=" + contacts.Address + "\n4.City=" + contacts.City + "\n5.Zip=" + contacts.Zip + "\n6.Phone Number=" + contacts.Phone_number + "\n7.Email=" + contacts.Email);
             }
         }
-        public void EditContacts()
+        public void EditContacts(string name)
         {
-            Console.WriteLine("\nChoose option to edit contact\n1.First Name\n2.Last Name\n3.Address\n4.City\n5.State\n6.ZIP\n7.Phone number\n8.E-Mail");
-            int option = Convert.ToInt32(Console.ReadLine());
-            switch (option)
+            foreach(var data in addressList)
             {
-                case 1:
-                        Console.WriteLine(contacts.First_Name);
-                    break;
-                case 2:
-                    contacts.Last_Name = Console.ReadLine();
-                    break;
-                case 3:
-                    contacts.Address = Console.ReadLine();
-                    break;
-                case 4:
-                    contacts.City = Console.ReadLine();
-                    break;
-                case 5:
-                    contacts.State = Console.ReadLine();
-                    break;
-                case 6:
-                    contacts.Zip = Console.ReadLine();
-                    break;
-                case 7:
-                    contacts.Phone_number = Console.ReadLine();
-                    break;
-                case 8:
-                    contacts.Email = Console.ReadLine();
-                    break;
+
+                if (data.First_Name.Equals(name.ToLower()))
+                {
+                    Console.WriteLine("\nChoose option to edit contact\n1.Last Name\n2.Address\n3.City\n4.State\n5.ZIP\n6.Phone number\n7.E-Mail");
+                    int option = Convert.ToInt32(Console.ReadLine());
+                    switch (option)
+                    {
+                        case 1:
+                            data.Last_Name = Console.ReadLine();
+                            break;
+                        case 2:
+                            data.Address = Console.ReadLine();
+                            break;
+                        case 3:
+                            data.City = Console.ReadLine();
+                            break;
+                        case 4:
+                            data.State = Console.ReadLine();
+                            break;
+                        case 5:
+                            data.Zip = Console.ReadLine();
+                            break;
+                        case 6:
+                            data.Phone_number = Console.ReadLine();
+                            break;
+                        case 7:
+                            data.Email = Console.ReadLine();
+                            break;
+                    }
+                }
             }
         }
     }

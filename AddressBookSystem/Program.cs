@@ -19,8 +19,8 @@ namespace AddressBookSysytem
                         address.Display();
                         break;
                         case 2:
-                        address.EditContacts();
-                        //address.Display();
+                        Console.WriteLine("Enter First Name");
+                        address.EditContacts(Console.ReadLine());
                         break;
                         case 3:
                         flag = false;
