@@ -20,8 +20,8 @@ namespace AddressBookSysytem
                         for(int i=0; i<n; i++)
                         {
                             address.AddContacts();
-                            address.Display();
                         }
+                        address.Display();
                         break;
                         case 2:
                         Console.WriteLine("Enter First Name");

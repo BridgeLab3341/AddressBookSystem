@@ -33,7 +33,7 @@ namespace AddressBookSystem
         {
             foreach(var  contact in addressList)
             {
-                Console.WriteLine("1.First Name=" + contacts.First_Name + "\n2.Last Name=" + contacts.Last_Name + "\n3.Address=" + contacts.Address + "\n4.City=" + contacts.City + "\n5.Zip=" + contacts.Zip + "\n6.Phone Number=" + contacts.Phone_number + "\n7.Email=" + contacts.Email);
+                 Console.WriteLine("1.First Name=" + contacts.First_Name + "\n2.Last Name=" + contacts.Last_Name + "\n3.Address=" + contacts.Address + "\n4.City=" + contacts.City + "\n5.Zip=" + contacts.Zip + "\n6.Phone Number=" + contacts.Phone_number + "\n7.Email=" + contacts.Email);
             }
         }
         public void EditContacts(string name)
