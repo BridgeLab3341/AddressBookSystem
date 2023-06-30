@@ -31,6 +31,7 @@ namespace AddressBookSystem
         }
         public void Display()
         {
+            foreach(var  contact in addressList)
             {
                 Console.WriteLine("1.First Name=" + contacts.First_Name + "\n2.Last Name=" + contacts.Last_Name + "\n3.Address=" + contacts.Address + "\n4.City=" + contacts.City + "\n5.Zip=" + contacts.Zip + "\n6.Phone Number=" + contacts.Phone_number + "\n7.Email=" + contacts.Email);
             }
@@ -70,6 +71,21 @@ namespace AddressBookSystem
                     }
                 }
             }
+        }
+        public void DeleteContact(string name)
+        {
+            Contacts contact = new Contacts();
+            foreach (var data in addressList)
+            {
+                if (data.First_Name.ToLower() == name.ToLower())
+                {
+                    contact = data;
+                }
+            }
+            if (contact == null)
+                Console.WriteLine("No contact exists with respect to first name");
+            else
+                addressList.Remove(contact);
         }
     }
 }
