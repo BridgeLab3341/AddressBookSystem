@@ -9,7 +9,7 @@ namespace AddressBookSysytem
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Choose the Option to Perform the Opearation\n1.Add Contact to the List\n2.Edit Contact List\n3.Delete Contact\n4.Search By City\n5.Search By State\n6.Exit");
+                Console.WriteLine("Choose the Option to Perform the Opearation\n1.Add Contact to the List\n2.Edit Contact List\n3.Delete Contact\n4.Search By City\n5.Search By State\n6.Count By City and State\n7.Exit");
                 int option=Convert.ToInt32(Console.ReadLine());
                 AddressBookOperations address = new AddressBookOperations();
                 switch (option)
@@ -44,6 +44,14 @@ namespace AddressBookSysytem
                         address.SearchByState(state);
                         break;
                         case 6:
+                        Console.WriteLine("Enter City Name");
+                        string cit=Console.ReadLine();
+                        address.ByCity(cit);
+                        Console.WriteLine("Enter City Name");
+                        string stat = Console.ReadLine();
+                        address.ByState(stat);
+                        break;
+                        case 7:
                         flag = false;
                         break;
                 }

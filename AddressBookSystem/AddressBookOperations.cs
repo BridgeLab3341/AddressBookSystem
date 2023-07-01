@@ -13,6 +13,8 @@ namespace AddressBookSystem
         List<Contacts> addressList = new List<Contacts>();
         Contacts Contacts=new Contacts();
         Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
+        public Dictionary<string, List<Contacts>> city = new Dictionary<string, List<Contacts>>();
+        public Dictionary<string, List<Contacts>> state = new Dictionary<string, List<Contacts>>();
         public void AddContacts()
         {
             Contacts contacts = new Contacts();
@@ -188,6 +190,16 @@ namespace AddressBookSystem
                     }
                 }
             }
+        }
+        public void ByCity(string cityname)
+        {
+           var result=city.Keys.Where(x=>x.Equals(cityname)).ToList();
+            Console.WriteLine("City Count = "+result.Count);
+        }
+        public void ByState(string statename)
+        {
+            var result = state.Keys.Where(x => x.Equals(statename)).ToList();
+            Console.WriteLine("No of Contact ------------>" + result.Count);
         }
     }
 }
