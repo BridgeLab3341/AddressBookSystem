@@ -9,25 +9,48 @@ namespace AddressBookSystem
     public class AddressBookOperations
     {
         Contacts contacts = new Contacts();
+        Dictionary<string,List<Contacts>> dict= new Dictionary<string,List<Contacts>>();
         List<Contacts> addressList = new List<Contacts>();
         public void AddContacts()
         {
             {
                 Console.WriteLine("Enter First Name");
                 contacts.First_Name = Console.ReadLine();
-                Console.WriteLine("Enter Last Name");
-                contacts.Last_Name = Console.ReadLine();
-                Console.WriteLine("Enter Address");
-                contacts.Address = Console.ReadLine();
-                Console.WriteLine("Enter City Name");
-                contacts.City = Console.ReadLine();
-                Console.WriteLine("Enter Zip Code");
-                contacts.Zip = Console.ReadLine();
-                Console.WriteLine("Enter PhoneNumber");
-                contacts.Phone_number = Console.ReadLine();
-                Console.WriteLine("Enter Email");
-                contacts.Email = Console.ReadLine();
+                int a=CheckDuplicate(contacts.First_Name);
+                if(a==0)
+                {
+                    Console.WriteLine("Enter Last Name");
+                    contacts.Last_Name = Console.ReadLine();
+                    Console.WriteLine("Enter Address");
+                    contacts.Address = Console.ReadLine();
+                    Console.WriteLine("Enter City Name");
+                    contacts.City = Console.ReadLine();
+                    Console.WriteLine("Enter Zip Code");
+                    contacts.Zip = Console.ReadLine();
+                    Console.WriteLine("Enter PhoneNumber");
+                    contacts.Phone_number = Console.ReadLine();
+                    Console.WriteLine("Enter Email");
+                    contacts.Email = Console.ReadLine();
+                }
             }
+        }
+        public int CheckDuplicate(string name)
+        {
+            int sum = 0;
+            if(dict.Count != 0)
+            {
+                foreach(var data in dict)
+                {
+                    Console.WriteLine(data.Key.Any(x=>x.Equals(name)));
+                    if(data.Key.Any(x=>x.Equals(name)))
+                    {
+                        Console.WriteLine("Duplicate is Preseent");
+                        sum = 1;
+                        break;
+                    }
+                }
+            }
+            return sum;
         }
         public void Display()
         {
