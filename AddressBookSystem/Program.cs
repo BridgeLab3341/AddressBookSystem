@@ -19,7 +19,7 @@ namespace AddressBookSysytem
                         int n=Convert.ToInt32(Console.ReadLine());
                         for(int i=0; i<n; i++)
                         {
-                            address.AddContacts();
+                            address.AddToAddressList();
                         }
                         address.Display();
                         break;

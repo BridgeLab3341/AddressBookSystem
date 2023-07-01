@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,84 +10,134 @@ namespace AddressBookSystem
 {
     public class AddressBookOperations
     {
-        Contacts contacts = new Contacts();
         List<Contacts> addressList = new List<Contacts>();
+        Contacts Contacts=new Contacts();
+        Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
         public void AddContacts()
         {
+            Contacts contacts = new Contacts();
             {
                 Console.WriteLine("Enter First Name");
                 contacts.First_Name = Console.ReadLine();
-                Console.WriteLine("Enter Last Name");
-                contacts.Last_Name = Console.ReadLine();
-                Console.WriteLine("Enter Address");
-                contacts.Address = Console.ReadLine();
-                Console.WriteLine("Enter City Name");
-                contacts.City = Console.ReadLine();
-                Console.WriteLine("Enter Zip Code");
-                contacts.Zip = Console.ReadLine();
-                Console.WriteLine("Enter PhoneNumber");
-                contacts.Phone_number = Console.ReadLine();
-                Console.WriteLine("Enter Email");
-                contacts.Email = Console.ReadLine();
+                int a=CheckUnique(contacts.First_Name);
+                if (a == 0)
+                {
+                    Console.WriteLine("Enter Last Name");
+                    contacts.Last_Name = Console.ReadLine();
+                    Console.WriteLine("Enter Address");
+                    contacts.Address = Console.ReadLine();
+                    Console.WriteLine("Enter City Name");
+                    contacts.City = Console.ReadLine();
+                    Console.WriteLine("Enter State Name");
+                    contacts.State = Console.ReadLine();
+                    Console.WriteLine("Enter Zip Code");
+                    contacts.Zip = Console.ReadLine();
+                    Console.WriteLine("Enter PhoneNumber");
+                    contacts.Phone_number = Console.ReadLine();
+                    Console.WriteLine("Enter Email");
+                    contacts.Email = Console.ReadLine();
+                }
             }
+            addressList.Add(contacts);
         }
         public void Display()
         {
-            foreach(var  contact in addressList)
+            foreach(var data in  addressList)
             {
-                 Console.WriteLine("1.First Name=" + contacts.First_Name + "\n2.Last Name=" + contacts.Last_Name + "\n3.Address=" + contacts.Address + "\n4.City=" + contacts.City + "\n5.Zip=" + contacts.Zip + "\n6.Phone Number=" + contacts.Phone_number + "\n7.Email=" + contacts.Email);
+                Console.WriteLine("\nFirst Name = "+data.First_Name+"  "+"\nLast Name = "+data.Last_Name+"  "+"\nAddress = "+data.Address+"  "+"\nCity = "+data.City+"  "+"  "+"\nState = "+data.State+"  "+"\nZip" +data.Zip+"  "+"\nPhone Number = "+data.Phone_number+"  "+"\nEmail = "+data.Email);
             }
         }
         public void EditContacts(string name)
         {
             foreach(var data in addressList)
             {
-
-                if (data.First_Name.Equals(name.ToLower()))
+                if(data.First_Name == name)
                 {
-                    Console.WriteLine("\nChoose option to edit contact\n1.Last Name\n2.Address\n3.City\n4.State\n5.ZIP\n6.Phone number\n7.E-Mail");
-                    int option = Convert.ToInt32(Console.ReadLine());
-                    switch (option)
+                    Console.WriteLine("Choose Option to Edit Deatils\n1.Last Name\n2.Addresss\n3.City\n4.State\n5.Zip\n6.Phone Number\n7.Email");
+                    int option=Convert.ToInt32(Console.ReadLine());
+                    switch(option)
                     {
                         case 1:
+                            Console.WriteLine("Enter Last Name");
                             data.Last_Name = Console.ReadLine();
+                            Display();
                             break;
-                        case 2:
+                            case 2:
+                            Console.WriteLine("Enter Last Name");
                             data.Address = Console.ReadLine();
+                            Display();
                             break;
-                        case 3:
+                            case 3:
+                            Console.WriteLine("Enter Last Name");
                             data.City = Console.ReadLine();
+                            Display();
                             break;
-                        case 4:
+                            case 4:
+                            Console.WriteLine("Enter Last Name");
                             data.State = Console.ReadLine();
+                            Display();
                             break;
-                        case 5:
+                            case 5:
+                            Console.WriteLine("Enter Last Name");
                             data.Zip = Console.ReadLine();
+                            Display();
                             break;
-                        case 6:
+                            case 6:
+                            Console.WriteLine("Enter Last Name");
                             data.Phone_number = Console.ReadLine();
+                            Display();
                             break;
-                        case 7:
+                            case 7:
+                            Console.WriteLine("Enter Last Name");
                             data.Email = Console.ReadLine();
+                            Display();
                             break;
                     }
+                }
+                else
+                {
+                    Console.WriteLine("First Name not Matching .........");
                 }
             }
         }
         public void DeleteContact(string name)
         {
-            Contacts contact = new Contacts();
-            foreach (var data in addressList)
+            Contacts contacts = new Contacts();
+            foreach(var data in addressList)
             {
-                if (data.First_Name.ToLower() == name.ToLower())
+                if(data.First_Name == name)
                 {
-                    contact = data;
+                    contacts=data;
+                }
+                if(data.First_Name == null)
+                {
+                    Console.WriteLine("No Contact Exits With Respect to First Namw");
+                }
+                else
+                {
+                    Console.WriteLine(contacts);
                 }
             }
-            if (contact == null)
-                Console.WriteLine("No contact exists with respect to first name");
-            else
-                addressList.Remove(contact);
+        }
+        public int CheckUnique(string name)
+        {
+            int flag = 0;
+            if (dict.Count != 0)
+            {
+                foreach (var data in dict)
+                {
+                    foreach (var item in data.Value)
+                    {
+                        if (data.Key.Equals(name))
+                        {
+                            Console.WriteLine("The Name You have given is Already Present");
+                            flag = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+            return flag;
         }
     }
 }
