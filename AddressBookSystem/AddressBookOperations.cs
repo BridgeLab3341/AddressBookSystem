@@ -8,10 +8,10 @@ namespace AddressBookSystem
 {
     public class AddressBookOperations
     {
-       // List<Contacts> addressList = new List<Contacts>();
-        Contacts contacts = new Contacts();
+        List<Contacts> addressList = new List<Contacts>();
         public void AddContacts()
         {
+            Contacts contacts = new Contacts();
             {
                 Console.WriteLine("Enter First Name");
                 contacts.First_Name = Console.ReadLine();
@@ -28,11 +28,13 @@ namespace AddressBookSystem
                 Console.WriteLine("Enter Email");
                 contacts.Email = Console.ReadLine();
             }
+            addressList.Add(contacts);
         }
         public void Display()
         {
+            foreach(var data in  addressList)
             {
-                Console.WriteLine("1.First Name: {0}\n2.Last Name: {1}\n3.Address: {2}\n4.City: {3},\n5.Zip: {4}\n6.Phone Number: {5}\n7.Email: {6}",contacts.First_Name,contacts.Last_Name,contacts.Address,contacts.City,contacts.Zip,contacts.Phone_number,contacts.Email);
+                Console.WriteLine("First Name = "+data.First_Name+"  "+"Last Name = "+data.Last_Name+"  "+"Address = "+data.Address+"  "+"City = "+data.City+"  "+"Zip" +data.Zip+"  "+"Phone Number = "+data.Phone_number+"  "+"Email = "+data.Email);
             }
         }
     }
