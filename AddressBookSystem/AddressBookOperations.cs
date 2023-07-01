@@ -163,5 +163,18 @@ namespace AddressBookSystem
             }
             return sum;
         }
+        public void SearchByCity(string city)
+        {
+            foreach(var data in dict)
+            {
+                foreach(var item in data.Value)
+                {
+                    if(item.City.Equals(city))
+                    {
+                        Console.WriteLine("\nFirst Name = " + item.First_Name + "  " + "\nLast Name = " + item.Last_Name + "  " + "\nAddress = " + item.Address + "  " + "\nCity = " + item.City + "  " + "  " + "\nState = " + item.State + "  " + "\nZip" + item.Zip + "  " + "\nPhone Number = " + item.Phone_number + "  " + "\nEmail = " + item.Email);
+                    }
+                }
+            }
+        }
     }
 }
