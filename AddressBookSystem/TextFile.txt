@@ -1,1 +1,9 @@
-﻿
+﻿Key------------>A
+First Name :Soma
+Last Name :Shekar
+Address :Banglore
+City :Banglore
+State :Karnataka
+Zip Code :123456
+Phone Number :999887766
+Mail Id :somu@gmail.com

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Formats.Asn1;
+using System.Globalization;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
@@ -46,6 +49,7 @@ namespace AddressBookSystem
             }
             addressList.Add(contacts);
             WriteToFile(@"D:\ReMapBridgeLabs\AddressBookSystem\AddressBookSystem\TextFile.txt");
+            WriteFileCSV(@"D:\ReMapBridgeLabs\AddressBookSystem\AddressBookSystem\CSVData.csv");
         }
         public void Display()
         {
@@ -252,6 +256,27 @@ namespace AddressBookSystem
                 while (sr.ReadLine() != null)
                 {
                     Console.WriteLine(sr.ReadLine());
+                }
+            }
+        }
+        public void WriteFileCSV(string filePath)
+        {
+            using(var writer=new StreamWriter(filePath))
+                using(var csvwriter=new CsvWriter(writer,CultureInfo.InvariantCulture))
+            {
+
+            }
+        }
+        public void ReadCSV(string filePath)
+        {
+            List<Contacts> contacts = new List<Contacts>();
+            using (var reader = new StreamReader(filePath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                contacts = csv.GetRecords<Contacts>().ToList();
+                foreach (var item in contacts)
+                {
+                    Console.WriteLine("First Name :" + item.First_Name + "\n" + "Last Name :" + item.Last_Name + "\n" + "Address :" + item.Address + "\n" + "City :" + item.City + "\n" + "State :" + item.State + "\n" + "Zip Code :" + item.Zip + "\n" + "Phone Number :" + item.Phone_number + "\n" + "Mail Id :" + item.Email);
                 }
             }
         }
