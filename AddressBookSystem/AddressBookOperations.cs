@@ -45,6 +45,7 @@ namespace AddressBookSystem
                 }
             }
             addressList.Add(contacts);
+            WriteToFile(@"D:\ReMapBridgeLabs\AddressBookSystem\AddressBookSystem\TextFile.txt");
         }
         public void Display()
         {
@@ -229,6 +230,30 @@ namespace AddressBookSystem
         {
             zipCode = zipCode.OrderBy(key => key.Key).ToDictionary(key => key.Key, key => key.Value);
             Console.WriteLine(zipCode);
+        }
+        public void WriteToFile(string filePath)
+        {
+            using (StreamWriter sr = new StreamWriter(filePath))
+            {
+                foreach (var data in dict)
+                {
+                    sr.WriteLine("Key------------>" + data.Key);
+                    foreach (var item in data.Value)
+                    {
+                        sr.WriteLine("First Name :" + item.First_Name + "\n" + "Last Name :" + item.Last_Name + "\n" + "Address :" + item.Address + "\n" + "City :" + item.City + "\n" + "State :" + item.State + "\n" + "Zip Code :" + item.Zip + "\n" + "Phone Number :" + item.Phone_number + "\n" + "Mail Id :" + item.Email);
+                    }
+                }
+            }
+        }
+        public void ReadFile(string filePath)
+        {
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                while (sr.ReadLine() != null)
+                {
+                    Console.WriteLine(sr.ReadLine());
+                }
+            }
         }
     }
 }

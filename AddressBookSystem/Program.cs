@@ -9,7 +9,7 @@ namespace AddressBookSysytem
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Choose the Option to Perform the Opearation\n1.Add Contact to the List\n2.Edit Contact List\n3.Delete Contact\n4.Search By City\n5.Search By State\n6.Count By City and State\n7.Sort Contacts\n8.Sort By City and State and Zip Code\n9.Exit");
+                Console.WriteLine("Choose the Option to Perform the Opearation\n1.Add Contact to the List\n2.Edit Contact List\n3.Delete Contact\n4.Search By City\n5.Search By State\n6.Count By City and State\n7.Sort Contacts\n8.Sort By City and State and Zip Code\n9.Read and Write the Address Book Using File IO\n10.Exit");
                 int option=Convert.ToInt32(Console.ReadLine());
                 AddressBookOperations address = new AddressBookOperations();
                 switch (option)
@@ -59,7 +59,10 @@ namespace AddressBookSysytem
                         address.SortState();
                         address.SortZip();
                         break;
-                        case 9:
+                    case 9:
+                        address.ReadFile(@"D:\ReMapBridgeLabs\AddressBookSystem\AddressBookSystem\TextFile.txt");
+                        break;
+                        case 10:
                         flag = false;
                         break;
                 }
