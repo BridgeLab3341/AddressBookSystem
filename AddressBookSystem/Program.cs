@@ -9,7 +9,7 @@ namespace AddressBookSysytem
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Choose the Option to Perform the Opearation\n1.Add Contact to the List\n2.Edit Contact List\n3.Delete Contact\n4.Search By City\n5.Search By State\n6.Count By City and State\n7.Sort Contacts\n8.Sort By City and State and Zip Code\n9.Read and Write the Address Book Using File IO\n10.Exit");
+                Console.WriteLine("Choose the Option to Perform the Opearation\n1.Add Contact to the List\n2.Edit Contact List\n3.Delete Contact\n4.Search By City\n5.Search By State\n6.Count By City and State\n7.Sort Contacts\n8.Sort By City and State and Zip Code\n9.Read and Write the Address Book Using File IO\n10.Write/Read To CSV \n11.Read Json File\n12.Exit");
                 int option=Convert.ToInt32(Console.ReadLine());
                 AddressBookOperations address = new AddressBookOperations();
                 switch (option)
@@ -63,6 +63,12 @@ namespace AddressBookSysytem
                         address.ReadFile(@"D:\ReMapBridgeLabs\AddressBookSystem\AddressBookSystem\TextFile.txt");
                         break;
                         case 10:
+                        address.ReadCSV(@"D:\ReMapBridgeLabs\AddressBookSystem\AddressBookSystem\CSVData.csv");
+                        break;
+                        case 11:
+                        address.ReadJson(@"D:\ReMapBridgeLabs\AddressBookSystem\AddressBookSystem\JsonFile.json");
+                        break;
+                        case 12:
                         flag = false;
                         break;
                 }

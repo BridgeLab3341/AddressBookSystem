@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -50,6 +51,7 @@ namespace AddressBookSystem
             addressList.Add(contacts);
             WriteToFile(@"D:\ReMapBridgeLabs\AddressBookSystem\AddressBookSystem\TextFile.txt");
             WriteFileCSV(@"D:\ReMapBridgeLabs\AddressBookSystem\AddressBookSystem\CSVData.csv");
+            ReadJson(@"D:\ReMapBridgeLabs\AddressBookSystem\AddressBookSystem\JsonFile.json");
         }
         public void Display()
         {
@@ -275,6 +277,17 @@ namespace AddressBookSystem
             {
                 contacts = csv.GetRecords<Contacts>().ToList();
                 foreach (var item in contacts)
+                {
+                    Console.WriteLine("First Name :" + item.First_Name + "\n" + "Last Name :" + item.Last_Name + "\n" + "Address :" + item.Address + "\n" + "City :" + item.City + "\n" + "State :" + item.State + "\n" + "Zip Code :" + item.Zip + "\n" + "Phone Number :" + item.Phone_number + "\n" + "Mail Id :" + item.Email);
+                }
+            }
+        }
+        public void ReadJson(string filePath)
+        {
+            Dictionary<string, List<Contacts>> records = JsonConvert.DeserializeObject<Dictionary<string, List<Contacts>>>(File.ReadAllText(filePath));
+            foreach (var data in records)
+            {
+                foreach (var item in data.Value)
                 {
                     Console.WriteLine("First Name :" + item.First_Name + "\n" + "Last Name :" + item.Last_Name + "\n" + "Address :" + item.Address + "\n" + "City :" + item.City + "\n" + "State :" + item.State + "\n" + "Zip Code :" + item.Zip + "\n" + "Phone Number :" + item.Phone_number + "\n" + "Mail Id :" + item.Email);
                 }
