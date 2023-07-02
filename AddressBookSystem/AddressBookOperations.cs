@@ -201,5 +201,17 @@ namespace AddressBookSystem
             var result = state.Keys.Where(x => x.Equals(statename)).ToList();
             Console.WriteLine("No of Contact ------------>" + result.Count);
         }
+        public void Sort()
+        {
+            List<Contacts>list= new List<Contacts>();
+            foreach(var data in dict)
+            {
+                foreach(var item in data.Value)
+                {
+                    list=data.Value.OrderBy(x=>x.First_Name).ToList();
+                    Console.WriteLine(list);
+                }
+            }
+        }
     }
 }
