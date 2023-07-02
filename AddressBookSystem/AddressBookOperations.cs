@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace AddressBookSystem
         Dictionary<string, List<Contacts>> dict = new Dictionary<string, List<Contacts>>();
         public Dictionary<string, List<Contacts>> city = new Dictionary<string, List<Contacts>>();
         public Dictionary<string, List<Contacts>> state = new Dictionary<string, List<Contacts>>();
+        public Dictionary<string, List<Contacts>> zipCode = new Dictionary<string, List<Contacts>>();
         public void AddContacts()
         {
             Contacts contacts = new Contacts();
@@ -212,6 +214,21 @@ namespace AddressBookSystem
                     Console.WriteLine(list);
                 }
             }
+        }
+        public void SortByCity()
+        {
+            city = city.OrderBy(key => key.Key).ToDictionary(key => key.Key, key => key.Value);
+            Console.WriteLine(city);
+        }
+        public void SortState()
+        {
+            state = state.OrderBy(key => key.Key).ToDictionary(key => key.Key, key => key.Value);
+            Console.WriteLine(state);
+        }
+        public void SortZip()
+        {
+            zipCode = zipCode.OrderBy(key => key.Key).ToDictionary(key => key.Key, key => key.Value);
+            Console.WriteLine(zipCode);
         }
     }
 }
